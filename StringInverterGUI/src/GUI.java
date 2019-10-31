@@ -1,6 +1,9 @@
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 /**
  * @author Jairo Cardenas
  *
@@ -21,6 +24,18 @@ public class GUI {
         return button;
     }
 
+    public void onClick(JButton jButton, JTextArea jTextArea1, JTextArea jTextArea2){
+        jButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String str = jTextArea1.getText();
+                StringBuffer sb = new StringBuffer(str);
+                sb.reverse();
+                jTextArea2.setText(sb.toString());
+            }
+        });
+    }
+
     public void createFrame(){
         //Frame creation
         JFrame frame = new JFrame("String inverter");
@@ -37,7 +52,9 @@ public class GUI {
         //JTextArea creation for output reverse string
         JTextArea showReverseString = createTextArea("Salida:");
         frame.add(showReverseString, BorderLayout.SOUTH);
-        showReverseString.setEnabled(false);
+        showReverseString.setEditable(false);
+
+        onClick(button, textArea, showReverseString);
 
         //Frame config
         frame.pack();
