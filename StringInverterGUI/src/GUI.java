@@ -43,6 +43,7 @@ public class GUI {
 
         //JTextArea creation for input string
         JTextArea textArea = createTextArea("Entrada:");
+        textArea.setForeground(Color.red);
         frame.add(textArea, BorderLayout.NORTH);
 
         //JButton creation
@@ -51,6 +52,7 @@ public class GUI {
 
         //JTextArea creation for output reverse string
         JTextArea showReverseString = createTextArea("Salida:");
+        showReverseString.setForeground(Color.green);
         frame.add(showReverseString, BorderLayout.SOUTH);
         showReverseString.setEditable(false);
 
